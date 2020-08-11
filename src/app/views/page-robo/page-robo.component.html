@@ -1,0 +1,87 @@
+<div class="card m-5">
+    <h5 class="card-header">R.O.B.O</h5>
+    <div class="card-body">
+        <div class="text-center">
+            <img src="../../assets/img/robot.png" width="150px" alt="Robo">
+        </div>
+
+        <form>
+            <div class="form-row align-items-center">
+
+                <div class="col-md">
+                    <h4>Braço Esquerdo</h4>
+                    <h6>Cotovelo: {{elbowLeft}}</h6>
+                    <h6>Pulso: {{pulseLeft}}</h6>
+                </div>
+
+                <div class="col-md">
+                    <h4>Cabeça</h4>
+                    <h6>Rotação: {{rotation}}</h6>
+                    <h6>Inclinação: {{inclination}}</h6>
+                </div>
+
+                <div class="col-md">
+                    <h4>Braço Direito</h4>
+                    <h6>Cotovelo: {{elbowRight}}</h6>
+                    <h6>Pulso: {{pulseRight}}</h6>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="card-footer">
+        <form>
+            <div class="form-row align-items-center">
+                <div class="col-md mb-3">
+                    <h6>Cotovelo</h6>
+                    <select (change)="changeStateElbow($event, 'esquerdo')" class="form-control form-control-sm" id="exampleFormControlSelect1">
+                        <option value={{i}} *ngFor="let item of listValuesElbow; let i = index">{{i + 1}} - {{item}}
+                        </option>
+                    </select>
+                    <h6>Pulso</h6>
+                    <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                        <option value={{i}} *ngFor="let item of listValuesPulse; let i = index">{{i + 1}} - {{item}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md mb-3">
+                    <h6>Rotação</h6>
+                    <select (change)="changeRotationHead($event)" class="form-control form-control-sm"
+                        id="exampleFormControlSelect1">
+                        <option value={{i}} *ngFor="let item of listValuesRotation; let i = index">{{i + 1}} - {{item}}
+                        </option>
+                    </select>
+                    <h6>Inclinação</h6>
+                    <select (change)="changeInclinationHead($event)" class="form-control form-control-sm"
+                        id="exampleFormControlSelect1">
+                        <option value={{i}} *ngFor="let item of listValuesInclination; let i = index">{{i + 1}} -
+                            {{item}}</option>
+                    </select>
+                </div>
+
+                <div class="col-md mb-3">
+                    <h6>Cotovelo</h6>
+                    <select (change)="changeStateElbow($event, 'direito')" class="form-control form-control-sm" id="exampleFormControlSelect1">
+                        <option value={{i}} *ngFor="let item of listValuesElbow; let i = index">{{i + 1}} - {{item}}
+                        </option>
+                    </select>
+                    <h6>Pulso</h6>
+                    <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                        <option value={{i}} *ngFor="let item of listValuesPulse; let i = index">{{i + 1}} - {{item}}
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+
+        </form>
+        <div *ngIf="success && !erro" class="alert alert-success" role="alert">
+            {{success}}
+        </div>
+        <div *ngIf="erro && !success" class="alert alert-danger" role="alert">
+            {{erro}}
+        </div>
+    </div>
+</div>
