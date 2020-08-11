@@ -8,8 +8,8 @@ import { Robo } from '../_models/robo';
 
 
 const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  };
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
     providedIn: 'root'
@@ -24,13 +24,13 @@ export class RoboService {
     }
 
     changeInclinationHead(idInclination: number) {
-        
-        return this.http.put<RoboResponse>(`${environment.apiUrl}/head-inclination/${idInclination}`,httpOptions)
+
+        return this.http.put<RoboResponse>(`${environment.apiUrl}/head-inclination/${idInclination}`, httpOptions)
             .pipe(
                 map(response => {
-                    if(response.Success){
+                    if (response.Success) {
                         return response;
-                    }else{
+                    } else {
                         throw new Error(response.Message);
                     }
                 }
@@ -38,13 +38,13 @@ export class RoboService {
             )
     };
 
-    changeRotationHead(idRotation: number){
-        return this.http.put<RoboResponse>(`${environment.apiUrl}/head-rotation/${idRotation}`,httpOptions)
+    changeRotationHead(idRotation: number) {
+        return this.http.put<RoboResponse>(`${environment.apiUrl}/head-rotation/${idRotation}`, httpOptions)
             .pipe(
                 map(response => {
-                    if(response.Success){
+                    if (response.Success) {
                         return response;
-                    }else{
+                    } else {
                         throw new Error(response.Message);
                     }
                 }
@@ -52,13 +52,13 @@ export class RoboService {
             )
     }
 
-    changeStateElbow(id:number, side: string){
-        return this.http.put<RoboResponse>(`${environment.apiUrl}/arm-elbow/${id}/${side}`,httpOptions)
+    changeStateElbow(id: number, side: string) {
+        return this.http.put<RoboResponse>(`${environment.apiUrl}/arm-elbow/${id}/${side}`, httpOptions)
             .pipe(
                 map(response => {
-                    if(response.Success){
+                    if (response.Success) {
                         return response;
-                    }else{
+                    } else {
                         throw new Error(response.Message);
                     }
                 }
@@ -66,7 +66,21 @@ export class RoboService {
             )
     }
 
-    
+    changeStatePulse(id: number, side: string) {
+        return this.http.put<RoboResponse>(`${environment.apiUrl}/arm-pulse/${id}/${side}`, httpOptions)
+            .pipe(
+                map(response => {
+                    if (response.Success) {
+                        return response;
+                    } else {
+                        throw new Error(response.Message);
+                    }
+                }
+                )
+            )
+    }
+
+
 
 
 }

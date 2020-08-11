@@ -112,6 +112,28 @@ export class PageRoboComponent implements OnInit {
         });
   }
 
+  changeStatePulse(event: any,side: string) {
+    this.idOption = this.convertStringToNumber(event.target.value);
+   
+    this.roboService.changeStatePulse(this.idOption, side)
+      .pipe(first()).subscribe(
+        data => {
+          if(side == "esquerdo"){
+            this.pulseLeft = Pulse[data.Data.idPulse];
+            this.success = data.Message;
+            this.erro = '';
+          }else{
+            this.pulseRight = Pulse[data.Data.idPulse];
+            this.success = data.Message;
+            this.erro = '';
+          }
+        },
+        error => {
+          this.adjustErrorMessage(error);
+          this.success = '';
+        });
+  }
+
 
 
   convertStringToNumber(valor: string) {
