@@ -16,15 +16,11 @@ import { first } from 'rxjs/operators';
 })
 export class PageRoboComponent implements OnInit {
 
-  //Lists
+  //Lists Values
   listValuesElbow = UtilsEnuns.getValues(Elbow);
   listValuesPulse = UtilsEnuns.getValues(Pulse);
   listValuesRotation = UtilsEnuns.getValues(Rotation);
   listValuesInclination = UtilsEnuns.getValues(Inclination);
-
-  idOption: number;
-  erro = '';
-  success = '';
 
   //Robo
   robo: Robo;
@@ -37,6 +33,11 @@ export class PageRoboComponent implements OnInit {
   //Right Arm
   elbowRight: string;
   pulseRight: string;
+
+  //Useful Variables
+  idOption: number;
+  erro = '';
+  success = '';
 
   constructor(private roboService: RoboService, private route: ActivatedRoute) { }
 
@@ -89,18 +90,17 @@ export class PageRoboComponent implements OnInit {
         });
   }
 
-  
-  changeStateElbow(event: any,side: string) {
+  changeStateElbow(event: any, side: string) {
     this.idOption = this.convertStringToNumber(event.target.value);
 
     this.roboService.changeStateElbow(this.idOption, side)
       .pipe(first()).subscribe(
         data => {
-          if(side == "esquerdo"){
+          if (side == "esquerdo") {
             this.elbowLeft = Elbow[data.Data.idElbow];
             this.success = data.Message;
             this.erro = '';
-          }else{
+          } else {
             this.elbowRight = Elbow[data.Data.idElbow];
             this.success = data.Message;
             this.erro = '';
@@ -112,17 +112,17 @@ export class PageRoboComponent implements OnInit {
         });
   }
 
-  changeStatePulse(event: any,side: string) {
+  changeStatePulse(event: any, side: string) {
     this.idOption = this.convertStringToNumber(event.target.value);
-   
+
     this.roboService.changeStatePulse(this.idOption, side)
       .pipe(first()).subscribe(
         data => {
-          if(side == "esquerdo"){
+          if (side == "esquerdo") {
             this.pulseLeft = Pulse[data.Data.idPulse];
             this.success = data.Message;
             this.erro = '';
-          }else{
+          } else {
             this.pulseRight = Pulse[data.Data.idPulse];
             this.success = data.Message;
             this.erro = '';
@@ -133,8 +133,6 @@ export class PageRoboComponent implements OnInit {
           this.success = '';
         });
   }
-
-
 
   convertStringToNumber(valor: string) {
     return Number(valor);

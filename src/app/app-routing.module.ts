@@ -4,14 +4,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-      {   
-        path: 'page-robo',          
-        component: PageRoboComponent,   
-        resolve:{         
-          response: RoboResolve  
-        }   
-      },  
-  { path: '', redirectTo: 'page-robo',pathMatch: 'full' }
+  {
+    path: 'page-robo',
+    component: PageRoboComponent,
+    resolve: {
+      response: RoboResolve
+    }
+  },
+  { path: '', redirectTo: 'page-robo', pathMatch: 'full' }
 ];
 
 @NgModule({

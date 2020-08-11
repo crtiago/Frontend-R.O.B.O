@@ -1,5 +1,7 @@
 <div class="card m-4">
     <h5 class="card-header">R.O.B.O</h5>
+
+    <!--Robot Image-->
     <div class="card-body">
         <div class="text-center">
             <img src="../../assets/img/robot.png" width="150px" alt="Robo">
@@ -8,61 +10,77 @@
 
     <div class="card-footer">
         <form>
+
+            <!--Left Arm-->
             <div class="form-row align-items-center">
                 <div class="col-md-4 mb-3">
                     <h5>Braço Esquerdo</h5>
                     <p class="info">Cotovelo: {{elbowLeft}}</p>
-                    <select (change)="changeStateElbow($event, 'esquerdo')" class="form-control form-control-sm" id="exampleFormControlSelect1">
+                    <select (change)="changeStateElbow($event, 'esquerdo')" class="form-control form-control-sm"
+                        id="exampleFormControlSelect1">
+                        <option value="" selected disabled hidden>Selecione um novo estado</option>
                         <option value={{i}} *ngFor="let item of listValuesElbow; let i = index">{{i + 1}} - {{item}}
                         </option>
                     </select>
                     <p class="info">Pulso: {{pulseLeft}}</p>
-                    <select (change)="changeStatePulse($event, 'esquerdo')" class="form-control form-control-sm" id="exampleFormControlSelect1">
+                    <select (change)="changeStatePulse($event, 'esquerdo')" class="form-control form-control-sm"
+                        id="exampleFormControlSelect1">
+                        <option value="" selected disabled hidden>Selecione um novo estado</option>
                         <option value={{i}} *ngFor="let item of listValuesPulse; let i = index">{{i + 1}} - {{item}}
                         </option>
                     </select>
                 </div>
 
+                <!--Head-->
                 <div class="col-md mb-3">
                     <h5>Cabeça</h5>
                     <p class="info">Rotação: {{rotation}}</p>
                     <select (change)="changeRotationHead($event)" class="form-control form-control-sm"
                         id="exampleFormControlSelect1">
+                        <option value="" selected disabled hidden>Selecione um novo estado</option>
                         <option value={{i}} *ngFor="let item of listValuesRotation; let i = index">{{i + 1}} - {{item}}
                         </option>
                     </select>
                     <p class="info">Inclinação: {{inclination}}</p>
                     <select (change)="changeInclinationHead($event)" class="form-control form-control-sm"
                         id="exampleFormControlSelect1">
+                        <option value="" selected disabled hidden>Selecione um novo estado</option>
                         <option value={{i}} *ngFor="let item of listValuesInclination; let i = index">{{i + 1}} -
                             {{item}}</option>
                     </select>
                 </div>
 
+                <!--Rigth Arm-->
                 <div class="col-md-4 mb-3">
                     <h5>Braço Direito</h5>
                     <p class="info">Cotovelo: {{elbowRight}}</p>
-                    <select (change)="changeStateElbow($event, 'direito')" class="form-control form-control-sm" id="exampleFormControlSelect1">
+                    <select (change)="changeStateElbow($event, 'direito')" class="form-control form-control-sm"
+                        id="exampleFormControlSelect1">
+                        <option value="" selected disabled hidden>Selecione um novo estado</option>
                         <option value={{i}} *ngFor="let item of listValuesElbow; let i = index">{{i + 1}} - {{item}}
                         </option>
                     </select>
                     <p class="info">Pulso: {{pulseRight}}</p>
-                    <select (change)="changeStatePulse($event, 'direito')" class="form-control form-control-sm" id="exampleFormControlSelect1">
+                    <select (change)="changeStatePulse($event, 'direito')" class="form-control form-control-sm"
+                        id="exampleFormControlSelect1">
+                        <option value="" selected disabled hidden>Selecione um novo estado</option>
                         <option value={{i}} *ngFor="let item of listValuesPulse; let i = index">{{i + 1}} - {{item}}
                         </option>
                     </select>
                 </div>
-
             </div>
 
         </form>
-            <div *ngIf="success && !erro" class="alert alert-success" role="alert">
-                {{success}}
-            </div>
-            <div *ngIf="erro && !success" class="alert alert-danger" role="alert">
-                {{erro}}
-            </div>
 
-        
+        <!--Success Message-->
+        <div *ngIf="success && !erro" class="alert alert-success" role="alert">
+            {{success}}
+        </div>
+
+         <!--Error Message-->
+        <div *ngIf="erro && !success" class="alert alert-danger" role="alert">
+            {{erro}}
+        </div>
+
     </div>
 </div>

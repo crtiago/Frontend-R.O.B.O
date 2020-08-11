@@ -3,29 +3,23 @@ import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, delay } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { Robo } from '../_models/robo';
-
-
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable({
     providedIn: 'root'
 })
 export class RoboService {
-
+    httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
 
     constructor(private http: HttpClient) { }
 
-    getRobo(): Observable<RoboResponse> {
+    getRobo() {
         return this.http.get<RoboResponse>(`${environment.apiUrl}/robo`).pipe(delay(500));
     }
 
     changeInclinationHead(idInclination: number) {
-
-        return this.http.put<RoboResponse>(`${environment.apiUrl}/head-inclination/${idInclination}`, httpOptions)
+        return this.http.put<RoboResponse>(`${environment.apiUrl}/head-inclination/${idInclination}`, this.httpOptions)
             .pipe(
                 map(response => {
                     if (response.Success) {
@@ -39,7 +33,7 @@ export class RoboService {
     };
 
     changeRotationHead(idRotation: number) {
-        return this.http.put<RoboResponse>(`${environment.apiUrl}/head-rotation/${idRotation}`, httpOptions)
+        return this.http.put<RoboResponse>(`${environment.apiUrl}/head-rotation/${idRotation}`, this.httpOptions)
             .pipe(
                 map(response => {
                     if (response.Success) {
@@ -53,7 +47,7 @@ export class RoboService {
     }
 
     changeStateElbow(id: number, side: string) {
-        return this.http.put<RoboResponse>(`${environment.apiUrl}/arm-elbow/${id}/${side}`, httpOptions)
+        return this.http.put<RoboResponse>(`${environment.apiUrl}/arm-elbow/${id}/${side}`, this.httpOptions)
             .pipe(
                 map(response => {
                     if (response.Success) {
@@ -67,7 +61,7 @@ export class RoboService {
     }
 
     changeStatePulse(id: number, side: string) {
-        return this.http.put<RoboResponse>(`${environment.apiUrl}/arm-pulse/${id}/${side}`, httpOptions)
+        return this.http.put<RoboResponse>(`${environment.apiUrl}/arm-pulse/${id}/${side}`, this.httpOptions)
             .pipe(
                 map(response => {
                     if (response.Success) {
@@ -79,8 +73,4 @@ export class RoboService {
                 )
             )
     }
-
-
-
-
 }
