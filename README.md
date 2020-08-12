@@ -14,6 +14,11 @@ os estados 3 ou 5, nunca pulando um estado.
 - Atenção aos limites! Se tentar enviar um estado inválido você irá corromper o
 sistema do R.O.B.O.
 
+# Características do Frontend
+- Suporte a mobile.
+- Apresentação dos estados atuais de cada membro do Robo através da API.
+- Controle dos movimentos do Robo.
+
 # Passos para executar o Frontend:
 - Passo 1: executar o Backend disponível em [Backend Robo](https://github.com/crtiago/Backend-R.O.B.O).
 - Passo 2: realizar o download do Frontend.
