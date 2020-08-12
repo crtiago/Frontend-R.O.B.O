@@ -14,6 +14,9 @@ os estados 3 ou 5, nunca pulando um estado.
 - Atenção aos limites! Se tentar enviar um estado inválido você irá corromper o
 sistema do R.O.B.O.
 
+# Versão
+- Angular: 10.0.8
+
 # Características do Frontend
 - Suporte a mobile.
 - Apresentação dos estados atuais de cada membro do Robo através da API.
